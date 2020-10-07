@@ -24,6 +24,12 @@ SECRET_KEY = 'z@pkci*&4utg*txsx$*wlc3txbftg-p$=(mf10u!9h9980r%63'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'ranierande331@gmail.com'
+EMAIL_HOST_PASSWORD = 'RaniErande#9763'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 ALLOWED_HOSTS = []
 
@@ -31,13 +37,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'store.apps.StoreConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'store.apps.StoreConfig',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +133,5 @@ STATICFILES_DIRS = [
 STATIC_URL = '/media/'
 MEDIA_ROOT=os.path.abspath(os.path.dirname(__file__))
 MEDIA_ROOT=os.path.join(PROJECT_ROOT, 'static/images')
+
+

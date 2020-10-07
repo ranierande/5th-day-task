@@ -45,7 +45,6 @@
 		            return decodeURIComponent(cookiePair[1]);
 		        }
 		    }
-
 		    // Return null if not found
 		    return null;
 		}
@@ -77,22 +76,61 @@
 	 
 	    </ul>
 	    <div class="form-inline my-2 my-lg-0">
-	     	<a href="#"class="btn btn-warning">Login</a>
-	     	
-	     	<a href="{% url 'cart' %}">
+		{% if request.session.newcustomer %}
+	 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbar-list-4">
+    <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="{% static 'images/userprofile.png' %}" width="40" height="40" class="rounded-circle">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'profile' %}">Previous orders</a>
+          <a class="dropdown-item" href="#">Edit Profile</a>
+          <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+        </div>
+      </li>   
+    </ul>
+  </div>
+		 <a href="{% url 'cart' %}">
 	    		<img  id="cart-icon" src="{% static 'images/cart.png' %}">
 	    	</a>
 	    	<p id="cart-total">{{cartItems}}</p>
+		 {% else %}
+<div class="btn-group">
+  <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Signup
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{% url 'signup' %}">Signup as customer</a>
+    <a class="dropdown-item" href="{% url 'signup1' %}">Signup as seller</a>
+</div>
+ <li class="nav-item active">
+<div class="btn-group">
+  <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  Login
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{% url 'login' %}">Login  as customer</a>
+    <a class="dropdown-item" href="{% url 'login1' %}">Login as seller</a>
+</div>
+</li>
+ <a href="{% url 'cart' %}">
+	    		<img  id="cart-icon" src="{% static 'images/cart.png' %}">
+	    	</a>
+	    	<p id="cart-total">{{cartItems}}</p>
+		
+			 {% endif %}
 
-	    </div>
 	  </div>
 	</nav>
 
      <div class="container">
             <br>
             {% block content %}
-
-
+			
             {% endblock content %}
          </div>
 
