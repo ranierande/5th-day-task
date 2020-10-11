@@ -73,8 +73,18 @@
 	      <li class="nav-item active">
 	        <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>
 	      </li>
-	 
-	    </ul>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"  data-toggle="dropdown" >
+         Categories 
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/?category={{category.id}}">Women</a>
+          <a class="dropdown-item" href="/?category={{category.id}}">Men</a>
+          <a class="dropdown-item" href="/?category={{category.id}}">Vegetables</a>
+        </div> 
+      </li>
+    </ul>
+  </div>
 	    <div class="form-inline my-2 my-lg-0">
 		{% if request.session.newcustomer %}
 	 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,8 +97,8 @@
           <img src="{% static 'images/userprofile.png' %}" width="40" height="40" class="rounded-circle">
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="{% url 'profile' %}">Previous orders</a>
-          <a class="dropdown-item" href="#">Edit Profile</a>
+          <a class="dropdown-item" href="{% url 'logout' %}">Previous orders</a>
+          <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Profile</a>
           <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
         </div>
       </li>   

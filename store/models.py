@@ -14,6 +14,7 @@ class Customer(models.Model):
         return self.name
 
 class NewCustomer(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     address = models.CharField(max_length=100,  null=True)

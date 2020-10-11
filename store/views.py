@@ -295,8 +295,11 @@ class Login1(View):
         print(email, password)
         return render(request, 'store/login1.html', {'error': error_message})
 
-def profile(request):
-    return render(request, 'store/profile.html')
+def Edit_profile(request):
+    context = {}
+    data = NewCustomer.objects.filter(email=NewCustomer.email)
+    context["data"]=data
+    return render(request, 'store/edit_profile.html',context)
 
 
 
